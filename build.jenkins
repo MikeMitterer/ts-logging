@@ -50,8 +50,7 @@ pipeline {
                 timeout(time: 15, unit: 'MINUTES') {
                     ansiColor('xterm') {
                         sh 'yarn run clean'
-                        sh 'yarn run gen:barrels'
-                        
+
                         sh 'yarn run build'
                         sh 'yarn run build:node'
                         sh 'yarn run build:web:prod'

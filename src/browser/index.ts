@@ -1,18 +1,17 @@
 // Styles für die gesamte Web-App
+import { LoggerFactory } from '../main/logging/LoggerFactory';
 import '../site/styles/main.scss';
 import { main } from './app';
 
-import { loggerFactory } from './config/ConfigLog4j';
-
 function everythingIsReady(): void {
-    const logger = loggerFactory.getLogger('done');
+    const logger = LoggerFactory.get('done');
 
     logger.info(`everythingIsReady!`);
     main();
 }
 
 function domIsReady(): void {
-    const logger = loggerFactory.getLogger('done');
+    const logger = LoggerFactory.get('done');
 
     logger.info(`domIsReady!`);
 }

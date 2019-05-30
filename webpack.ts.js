@@ -1,7 +1,7 @@
 const path = require('path');
 
 const nodeExternals = require('webpack-node-externals');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const pkg = require('./package.json');
 // const webpack = require('webpack');
 
@@ -114,7 +114,7 @@ module.exports = {
     },
     plugins: [
         // clean folders
-        new CleanWebpackPlugin({}),
+        new CleanWebpackPlugin(),
 
         // https://webpack.js.org/plugins/source-map-dev-tool-plugin/
         // new webpack.SourceMapDevToolPlugin( {

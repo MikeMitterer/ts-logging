@@ -1,12 +1,14 @@
 import * as fs from 'fs';
 import * as process from 'process';
-import { loggerFactory } from './config/ConfigLog4j';
+import { LoggerFactory, LogLevel } from '../main';
 
 // import sayMyName from './fs-part';
 
 const pkg = fs.readFileSync('package.json');
 const pwd = process.cwd();
-const logger = loggerFactory.getLogger('main');
+const logger = LoggerFactory.for('mmit.logger.main')
+    .level(LogLevel.INFO)
+    .get();
 
 logger.info(pkg.toString());
 logger.info(pwd);
