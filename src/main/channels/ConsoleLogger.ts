@@ -38,7 +38,7 @@ export class ConsoleLogger implements Channel {
 
     public error(timestamp: number, loggerName: string, message: string, obj?: unknown): void {
         if (obj) {
-            console.error(this.fmt(LogLevel.ERROR, timestamp, loggerName, message));
+            console.error(this.fmt(LogLevel.ERROR, timestamp, loggerName, message), this.fmtOptional(obj));
         } else {
             console.error(this.fmt(LogLevel.ERROR, timestamp, loggerName, message));
         }
