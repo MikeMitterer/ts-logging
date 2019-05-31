@@ -4,14 +4,14 @@ import '../site/styles/main.scss';
 import { main } from './app';
 
 function everythingIsReady(): void {
-    const logger = LoggerFactory.get('done');
+    const logger = LoggerFactory.getLogger('done');
 
     logger.info(`everythingIsReady!`);
     main();
 }
 
 function domIsReady(): void {
-    const logger = LoggerFactory.get('done');
+    const logger = LoggerFactory.getLogger('done');
 
     logger.info(`domIsReady!`);
 }

@@ -23,7 +23,7 @@ The most simplest way to get the logger is:
 ```typescript
     import { LoggerFactory } from '@mmit/logger';
 
-    const logger = LoggerFactory.get('test.Logger');
+    const logger = LoggerFactory.getLogger('test.Logger');
     
     // Will not be shown
     logger.debug("Shows message only if debug-level is set!");

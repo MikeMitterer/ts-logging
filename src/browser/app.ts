@@ -22,7 +22,7 @@ window.QUnit = { config: { autostart: false /* noglobals: true */ } };
 // export it in the config above etc. Your loggers - your choice!).
 // This logger will fall in the first LogGroupRule from above.
 LoggerFactory.defaultLevel = LogLevel.INFO;
-const logger = LoggerFactory.get('main');
+const logger = LoggerFactory.getLogger('main');
 
 export function main(): void {
     const test = QUnit.test;

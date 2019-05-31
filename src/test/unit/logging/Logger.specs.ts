@@ -35,9 +35,9 @@ describe('Logger', () => {
     });
 
     test('Add two Loggers with the same name', () => {
-        const logger1 = LoggerFactory.get('test.Logger');
-        const logger2 = LoggerFactory.get('test.Logger');
-        const logger3 = LoggerFactory.get('test.Logger.other');
+        const logger1 = LoggerFactory.getLogger('test.Logger');
+        const logger2 = LoggerFactory.getLogger('test.Logger');
+        const logger3 = LoggerFactory.getLogger('test.Logger.other');
 
         expect(LoggerFactory.loggers.length).toBe(2);
     });
@@ -71,7 +71,7 @@ describe('Logger', () => {
     });
 
     test('Global Log-Level ist by default WARN', () => {
-        const logger = LoggerFactory.get('test.Logger');
+        const logger = LoggerFactory.getLogger('test.Logger');
 
         logger.debug('Test - Debug');
         logger.info('Test - Info', { name: 'Mike Mitterer' });
@@ -86,7 +86,7 @@ describe('Logger', () => {
 
     test('Change Global Log-Level to INFO', () => {
         LoggerFactory.defaultLevel = LogLevel.INFO;
-        const logger = LoggerFactory.get('test.Logger');
+        const logger = LoggerFactory.getLogger('test.Logger');
 
         logger.debug('Test - Debug');
         logger.info('Test - Info', { name: 'Mike Mitterer' });

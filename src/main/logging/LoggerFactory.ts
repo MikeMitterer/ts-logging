@@ -16,7 +16,7 @@ export class LoggerFactory {
 
     public static readonly loggers: LoggerImpl[] = [];
 
-    public static get(loggerName: string): Logger {
+    public static getLogger(loggerName: string): Logger {
         let found = this.loggers.find((logger) => logger.name === loggerName);
         if (!found) {
             found = instanciateLogger(loggerName, LoggerFactory.defaultLevel, defaultChannel);
