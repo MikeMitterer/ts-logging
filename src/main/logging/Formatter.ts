@@ -10,8 +10,14 @@ export interface Formatter {
     optional: OptionalFormatter;
 }
 
+/**
+ * Defines a basic output-Format
+ *
+ * @param minMessageLength Defines the minimum length of the message
+ * @param maxNameLength Defines the maximal output length of logger name
+ */
 // prettier-ignore
-export const defaultFormatter = (maxMessageLength: number = 50, maxNameLength: number = 30): Formatter => {
+export const defaultFormatter = (minMessageLength: number = 50, maxNameLength: number = 30): Formatter => {
 
     return {
         format: (level: LogLevel, timestamp: number, loggerName: string, message: string): string => {
@@ -19,7 +25,7 @@ export const defaultFormatter = (maxMessageLength: number = 50, maxNameLength: n
             const formattedTimeStamp = TimeStamp.toTime(timestamp);
 
             return `${formattedTimeStamp} [${LogLevel[level]}] ` +
-                `${truncateMessage(message, maxMessageLength)}` +
+                `${padMessage(message, minMessageLength)}` +
                 ` | ${truncateLoggerName(loggerName, maxNameLength)}`;
         },
 
@@ -40,10 +46,10 @@ export const jsonFormatter: Formatter = {
     optional: toJson,
 };
 
-export const truncateMessage = (message: string, length: number): string => {
-    if (message.length > length) {
-        return `${message.substr(0, length - 3)}...`;
-    }
+export const padMessage = (message: string, length: number): string => {
+    // if (message.length > length) {
+    //     return `${message.substr(0, length - 3)}...`;
+    // }
     return message.padEnd(length);
 };
 
