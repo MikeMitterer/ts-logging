@@ -72,3 +72,24 @@ If you want to specify your own Log-Channel:
     
     logger.debug("Shows message only if debug-level is set!");
 ```    
+
+## Output Example
+```bash
+    console.info node_modules/@mmit/logging/lib/channels/ConsoleLogger.js:23
+      15:42:42.998 [INFO] Connecting to : wss://mobiad.int.mikemitterer.at:8060/message | ...st.integration.services.WebSocket
+    console.info node_modules/@mmit/logging/lib/channels/ConsoleLogger.js:20
+      15:42:43.148 [INFO] onOpenEvent-Payload:                               | ...st.integration.services.WebSocket
+      "{\"event\":\"mm.services.websocket.onOpenEvent\"}"
+    console.info node_modules/@mmit/logging/lib/channels/ConsoleLogger.js:20
+      15:42:43.148 [INFO] Event:                                             | ...st.integration.services.WebSocket
+      {
+          "event": "showresourceevent",
+          "data": {
+              "resourcetype": "Job",
+              "resourceid": "25ee12ff-1dc2-40dd-afc6-4a2901491e72",
+              "url": "http://www.mikemitterer.at/images/mobiad.jpg"
+          }
+      }
+    console.info node_modules/@mmit/logging/lib/channels/ConsoleLogger.js:20
+      15:42:43.288 [INFO] onJsonEvent-Payload:                               | ...st.integration.services.WebSocket
+```
