@@ -12,7 +12,7 @@ const defaultChannel: Channel = new ConsoleLogger();
  * Creates and holds all the loggers
  */
 export class LoggerFactory {
-    public static defaultLevel = LogLevel.WARN;
+    public static defaultLevel = LogLevel.INFO;
 
     public static readonly loggers: LoggerImpl[] = [];
 

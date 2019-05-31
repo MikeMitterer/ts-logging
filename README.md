@@ -16,7 +16,7 @@ should be easy to define your own logger
         
 ## Usage
 
-The "default LogLevel" is 'WARN'
+The "default LogLevel" is 'INFO'
 
 The most simplest way to get the logger is:
 

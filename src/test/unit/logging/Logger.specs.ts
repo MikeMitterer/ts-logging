@@ -13,7 +13,7 @@ describe('Logger', () => {
             error: jest.fn(),
         };
         LoggerFactory.loggers.length = 0;
-        LoggerFactory.defaultLevel = LogLevel.WARN;
+        LoggerFactory.defaultLevel = LogLevel.INFO;
     });
 
     test('Log something', () => {
@@ -70,7 +70,7 @@ describe('Logger', () => {
         expect(global.console.error).toHaveBeenCalledTimes(0);
     });
 
-    test('Global Log-Level ist by default WARN', () => {
+    test('Global Log-Level ist by default INFO', () => {
         const logger = LoggerFactory.getLogger('test.Logger');
 
         logger.debug('Test - Debug');
@@ -79,7 +79,7 @@ describe('Logger', () => {
         logger.error('Test - Error');
 
         expect(global.console.debug).toHaveBeenCalledTimes(0);
-        expect(global.console.info).toHaveBeenCalledTimes(0);
+        expect(global.console.info).toHaveBeenCalledTimes(1);
         expect(global.console.warn).toHaveBeenCalledTimes(1);
         expect(global.console.error).toHaveBeenCalledTimes(1);
     });
