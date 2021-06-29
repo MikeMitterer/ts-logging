@@ -12,7 +12,7 @@ should be easy to define your own logger
     npm install @mmit/logging
     
     # YARN
-    npm add @mmit/logging
+    yarn add @mmit/logging
         
 ## Usage
 
@@ -21,7 +21,7 @@ The "default LogLevel" is 'INFO'
 The most simplest way to get the logger is:
 
 ```typescript
-    import { LoggerFactory } from '@mmit/logger';
+    import { LoggerFactory } from '@mmit/logging';
 
     const logger = LoggerFactory.getLogger('test.Logger');
     
@@ -38,7 +38,7 @@ The most simplest way to get the logger is:
 If you need more control:
 
 ```typescript
-    import { LoggerFactory, LogLevel } from '@mmit/logger';
+    import { LoggerFactory, LogLevel } from '@mmit/logging';
 
      const logger = LoggerFactory.for('test.Logger')
                 .level(LogLevel.DEBUG)

@@ -34,7 +34,7 @@
     "test:integration": "jest --colors --runInBand --detectOpenHandles src/test/integration",
     "test:e2e": "E2E_TEST='true' jest --colors --runInBand --detectOpenHandles src/test/e2e",
     "doc": "typedoc --out doc --tsconfig tsconfig.lib.json",
-    "clean": "rm -rf lib dist bin doc && jest --clearCache",
+    "clean": "rm -rf lib dist bin && jest --clearCache",
     "prettier": "onchange './src/**/*.ts'  -- prettier --write {{changed}}"
   },
   "files": [
@@ -87,12 +87,12 @@
     "jest-resolve": "^24.8.0",
     "mini-css-extract-plugin": "^0.7.0",
     "moment": "^2.24.0",
-    "node-sass": "^4.12.0",
     "postcss": "^7.0.16",
     "postcss-loader": "^3.0.0",
     "puppeteer": "^1.17.0",
     "qunit": "^2.9.2",
-    "sass-loader": "^7.1.0",
+    "sass": "^1.35.1",
+    "sass-loader": "10",
     "semver": "^6.1.1",
     "shelljs": "^0.8.3",
     "source-map-loader": "^0.2.4",
