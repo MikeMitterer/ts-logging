@@ -1,8 +1,8 @@
+import * as qu from 'qunit';
 import { LoggerFactory } from '../main/logging/LoggerFactory';
 import { LogLevel } from '../main/logging/LogLevel';
 import lambi from '../site/images/lambi.png';
 import { testQUnit } from './test/qunit.test';
-import * as qu from 'qunit'
 
 const query = (selector: string): HTMLElement => document.querySelector(selector) as HTMLElement;
 
