@@ -35,7 +35,7 @@
     "test:unit": "jest --colors src/test/unit",
     "test:integration": "jest --colors --runInBand --detectOpenHandles src/test/integration",
     "test:e2e": "E2E_TEST='true' jest --colors --runInBand --detectOpenHandles src/test/e2e",
-    "doc": "typedoc --out doc --tsconfig tsconfig.lib.json",
+    "doc": "typedoc --out doc --tsconfig tsconfig.lib.json src/main/index.ts",
     "prettier": "onchange './src/**/*.ts'  -- prettier --write {{changed}}"
   },
   "files": [

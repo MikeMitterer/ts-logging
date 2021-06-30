@@ -57,7 +57,7 @@ pipeline {
                         sh 'yarn run build:node'
                         sh 'yarn run build:web:prod'
 
-                        sh 'yarn run doc'
+                        // sh 'yarn run doc'
                     }
                 }
 
