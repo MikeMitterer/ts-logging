@@ -13,7 +13,7 @@ import puppeteer, { Browser, Page } from 'puppeteer';
  * Mehr:
  *      https://dev.to/aalises/dealing-with-asynchrony-when-writing-end-to-end-tests-with-puppeteer--jest-n37
  */
-describe('puppeteer.ts', () => {
+describe('puppeteer.ts', (): void => {
     const TEST_PORT = 5000;
 
     // const logger = loggerFactory.getLogger('test.reminder.ts');
@@ -24,7 +24,7 @@ describe('puppeteer.ts', () => {
     const height = 1080;
 
     // https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md
-    beforeEach(async () => {
+    beforeEach(async (): Promise<void> => {
         browser = await puppeteer.launch({
             headless: false,
             // slowMo: 100,
@@ -36,19 +36,16 @@ describe('puppeteer.ts', () => {
         // await jestPuppeteer.debug();
     });
 
-    afterEach(async () => {
+    afterEach(async (): Promise<void> => {
         await page.close();
         await browser.close();
     });
 
-    test('Test in Browser', async () => {
+    test('Test in Browser', async (): Promise<void> => {
+        await page.waitForTimeout(4000)
+
         const title = await page.title();
         expect(title).toStartWith('✔ Title');
-        // await page.setContent(
-        //     `
-        //         <h1>Test</h1>
-        //     `,
-        // );
-        // await jestPuppeteer.debug();
+
     }, 100000);
 });

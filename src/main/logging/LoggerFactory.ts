@@ -17,7 +17,7 @@ export class LoggerFactory {
     public static readonly loggers: LoggerImpl[] = [];
 
     public static getLogger(loggerName: string): Logger {
-        let found = this.loggers.find((logger) => logger.name === loggerName);
+        let found = this.loggers.find((logger): boolean => logger.name === loggerName);
         if (!found) {
             found = instanciateLogger(loggerName, LoggerFactory.defaultLevel, defaultChannel);
         }
@@ -48,7 +48,7 @@ export class LoggerFactorySyntax {
     }
 
     public get(): Logger {
-        const found = LoggerFactory.loggers.find((logger) => logger.name === this.loggerName);
+        const found = LoggerFactory.loggers.find((logger): boolean => logger.name === this.loggerName);
 
         if (!found) {
             const level = this._level ? this._level : LoggerFactory.defaultLevel;
