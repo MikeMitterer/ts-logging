@@ -1,7 +1,7 @@
 {
   "name": "@mmit/logging",
   "author": "Mike Mitterer",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Minimal Logging framework",
   "keywords": [
     "typescript logging"
