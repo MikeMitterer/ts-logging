@@ -2,6 +2,7 @@
  * Using Rollup - what do to first:
  *    - yarn add -D @rollup/plugin-commonjs @rollup/plugin-node-resolve @rollup/plugin-replace @rollup/plugin-typescript rollup
  *    - Change "module" in tsconfig.lib.json to esnext
+ *    - Add script to package.json: "build:rup": "rollup -c",
  */
 
 import typescript from '@rollup/plugin-typescript';

@@ -39,6 +39,8 @@ pipeline {
         stage('Test') {
             steps {
                 ansiColor('xterm') {
+                    sh 'yarn run clean'
+
                     sh 'yarn run tc'
                     sh 'yarn run lint'
                     sh 'yarn run test'
