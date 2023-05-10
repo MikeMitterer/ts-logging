@@ -7,6 +7,8 @@ function everythingIsReady(): void {
     const logger = LoggerFactory.getLogger('done');
 
     logger.info(`everythingIsReady!`);
+
+    // noinspection JSIgnoredPromiseFromCall
     main();
 }
 

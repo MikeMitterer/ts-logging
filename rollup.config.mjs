@@ -8,8 +8,18 @@
 import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace'
 
-import pkg from './package.json' // Convert CommonJS modules to ES6
-import scss from 'rollup-plugin-scss'
+import pkg from './package.json' assert { type: 'json' };
+
+// 'rollup-plugin-scss' hat immer zur Fehlermeldung:
+//
+//   Can't find stylesheet to import.
+//   ╷
+//   │ @import "~@mmit/styles/css/mobiad";
+//   │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+//
+// geführt...
+import styles from "rollup-plugin-styles";
+
 import image from '@rollup/plugin-image';
 
 const name = "logging"
@@ -30,6 +40,7 @@ const lib = {
     external: [
         // ...Object.keys(pkg.dependencies || {}),
         // "fs",
+
     ],
     plugins: [
         replace({
@@ -37,18 +48,22 @@ const lib = {
             __buildVersion__: pkg.version
         }),
         typescript({
-            typescript: require('typescript'),
+            // typescript: require('typescript'),
             // module: 'esnext',
             //
             // declaration: true,
             // declarationDir: './lib/types/',
             rootDir: './src/main',
-            
+            outDir: './lib',
+
             tsconfig: "tsconfig.lib.json",
         }),
     ]
 };
 
+/**
+ * Wird eigentlich nicht benötigt umd am [ 2023 05 10 ] als proof of concept gewertet.
+ */
 const dist = {
     // this is the entry file, this should expose our API
     input: 'src/browser/index.ts',
@@ -66,9 +81,15 @@ const dist = {
     external: [
         // ...Object.keys(pkg.dependencies || {}),
         // "fs",
+        '@mmit/muni', 'chai'
     ],
     plugins: [
-        scss(),
+        // scss({
+        //     includePaths: [
+        //         './node_modules/',
+        //     ]
+        // }),
+        styles(),
         image(),
 
         replace({
@@ -76,12 +97,13 @@ const dist = {
             __buildVersion__: pkg.version
         }),
         typescript({
-            typescript: require('typescript'),
+            // typescript: require('typescript'),
             // module: 'esnext',
             //
             // declaration: true,
             // declarationDir: './lib/types/',
             rootDir: './src',
+            outDir: './dist',
 
             tsconfig: "tsconfig.lib.json",
         }),

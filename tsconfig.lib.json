@@ -17,7 +17,7 @@
         "strict": true,
         "target": "esnext",
 
-        "outDir": "./lib",
+//        "outDir": "./lib",
         "rootDir": "./src",
 
         // commonjs, amd oder es6 (esnext)
@@ -104,6 +104,9 @@
     "include": [
         // "src/index.ts",
         "src/main/**/*.ts",
+
+        // Sonst funktioniert rollup nicht
+        "src/**/*.ts",
 
         // Damit funktioniert jest-extended
         "src/types/global.d.ts"
