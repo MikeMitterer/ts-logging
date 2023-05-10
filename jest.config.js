@@ -135,7 +135,7 @@ module.exports = {
     // setupTestFrameworkScriptFile: null,
 
     // https://www.npmjs.com/package/jest-extended#setup
-    // "setupFilesAfterEnv": [ "jest-extended" ],
+    "setupFilesAfterEnv": [ 'jest-extended/all' ],
 
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
@@ -200,9 +200,7 @@ module.exports = {
     //
     // UNBEDINGT Notwendig für ES6 module!!!!
     //
-    // transformIgnorePatterns: [
-    //      "<rootDir>/node_modules/(?!@mmit\/communication)"
-    // ],
+    transformIgnorePatterns: ['<rootDir>/node_modules/(?!(@mmit|vuetify|@mdi)/.*)'],
 
     // An array of regexp pattern strings that are matched against all
     // modules before the module loader will automatically return a mock for them

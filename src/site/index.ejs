@@ -5,7 +5,8 @@
     <title>Title <%= version %></title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="description"
+          content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Add to homescreen for Chrome on Android -->
@@ -19,19 +20,22 @@
     <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileImage"
+          content="images/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#3372DF">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- QUNIT -->
-    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.16.0.css">
-
-    <%if(devmode){%><script src="http://localhost:35729/livereload.js"></script><%}%>
+    <% if(devmode){ %>
+        <script src="http://localhost:35729/livereload.js"></script>
+    <% } %>
 
     <style>
-        .layout { opacity: 0; }
+        .layout {
+            opacity: 0;
+        }
     </style>
 </head>
 <body class="loading">
@@ -47,48 +51,27 @@
             <img id="frontImg"/>
         </div>
     </div>
-    <div class="layout__content">
-        <div class="content">
-            <div class="left">
-                <div class="toolbar">
-                    <div class="button" id="tstest">Click me</div>
-                    <div class="button" id="tsevent">TS-Event</div>
-                    <div class="button" id="tsexception">TS-Exception</div>
-                </div><br>
-                <div class="example">Test für PREFIXER!</div>
-                <% include _partials/lorem.html %>
-                <% include _partials/lorem.html %>
-                <% include _partials/lorem.html %>
-                <% include _partials/lorem.html %>
-                <% include _partials/lorem.html %>
-                <% include _partials/lorem.html %>
+    <div class="layout__content col-2">
+        <div class="left">
+            <div class="toolbar">
+                <div class="button" id="tstest">Click me</div>
+                <div class="button" id="tsevent">TS-Event</div>
+                <div class="button" id="tsexception">TS-Exception</div>
             </div>
-            <div class="right">
-                <div id="unit-tests">
-                    <div id="qunit"></div>
-                    <div id="qunit-fixture"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="layout__footer">
-        <div class="is-left">
-            <span class="loading">Loading...</span>
-        </div>
-        <div class="is-right">
-            <div class="version_block">
-                <span class="version">Version <%= version %></span>
-                <span class="separator">/</span>
-                <span class="published"><%= published %></span>
-                <span class="separator">/</span>
-            </div>
-            <% if(devmode) { %>
-                <span class="devmode">DevMode</span>
-            <% } else { %>
-                <span class="production">Production</span>
-            <% } %>
-        </div>
+            <br>
+            <div class="example">Test für PREFIXER!</div>
 
+            <% include _partials/lorem.html %>
+            <% include _partials/lorem.html %>
+            <% include _partials/lorem.html %>
+            <% include _partials/lorem.html %>
+            <% include _partials/lorem.html %>
+            <% include _partials/lorem.html %>
+        </div>
+        <div class="right">
+            <% include _partials/muni.html %>
+        </div>
     </div>
+    <% include _partials/footer.html %>
 </div>
 </body>

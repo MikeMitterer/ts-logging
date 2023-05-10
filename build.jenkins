@@ -15,7 +15,7 @@ pipeline {
             steps {
                 timeout(time: 15, unit: 'MINUTES') {
                     ansiColor('xterm') {
-                        sh 'yarn'
+                        sh 'yarn && yarn install && yarn clean'
 
                         // Repos von Amazon holen
                         // sh 'docker/_ci/run.sh --pull'
@@ -26,6 +26,9 @@ pipeline {
                         // Hostname richtigstellen
                         // sh 'cp -f src/test/integration/test-config.linux.json src/test/integration/test-config.json'
                         // sh 'cp -f src/browser/test/test-config.linux.json src/browser/test/test-config.json'
+
+                        // Browser-List updaten
+                        sh 'yarn run update:browser'
 
                         script {
                             // 0 - unchanged, 1 - changed

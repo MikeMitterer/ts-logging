@@ -1,8 +1,8 @@
-import * as qu from 'qunit';
 import { LoggerFactory } from '../main/logging/LoggerFactory';
 import { LogLevel } from '../main/logging/LogLevel';
 import lambi from '../site/images/lambi.png';
-import { testQUnit } from './test/qunit.test';
+import * as muni from '@mmit/muni'
+import {testMUnit} from "./test/muni.e2e.test";
 
 const query = (selector: string): HTMLElement => document.querySelector(selector) as HTMLElement;
 
@@ -25,7 +25,7 @@ const query = (selector: string): HTMLElement => document.querySelector(selector
 LoggerFactory.defaultLevel = LogLevel.INFO;
 const logger = LoggerFactory.getLogger('main');
 
-export function main(): void {
+export async function main(): Promise<void> {
     // const test = QUnit.test;
     // const describe = QUnit.module;
 
@@ -50,15 +50,16 @@ export function main(): void {
     body.classList.remove('loading');
     body.classList.add('loaded');
 
-    qu.config.testTimeout = 30000;
+    muni.resetIndicator()
 
-    qu.test('add two numbers', (assert): void => {
-        assert.equal(1 + 1, 2);
-    });
+    await Promise.all([
+        await testMUnit(),
+    ])
 
-    testQUnit();
+    muni.setIndicatorTo(muni.errors === 0, { onError: (): void => {
+            logger.error(`Unit-Tests failed with #${muni.errors} error(s)!`)
+        }})
 
-    qu.start();
 
     // logger.info(`Done!!!! ${os.platform()}`);
     logger.info(`Done!!!1`);

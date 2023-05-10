@@ -65,6 +65,39 @@ module.exports = {
             '@test': srcPath('test'),
             '@images': srcPath('site/images'),
         },
+        fallback: {
+        //     // Can't resolve 'fs' in
+        //     "fs": false,
+        //
+        //     // "tls": false,
+        //     // "net": false,
+        //     // "path": false,
+        //     // "zlib": false,
+        //     // "http": false,
+        //     // "https": false,
+        //     // "stream": false,
+        //     // "crypto": false,
+        //     // "url": false,
+        //
+        //     // yarn add path-browserify crypto-browserify https-browserify stream-browserify stream-http browserify-zlib assert buffer
+        //     "path": require.resolve("path-browserify"), // yarn add path-browserify
+        //     "crypto": require.resolve("crypto-browserify"), // yarn add crypto-browserify
+        //     "https": require.resolve("https-browserify"), // yarn add https-browserify
+        //     "stream": require.resolve("stream-browserify"), // yarn add stream-browserify
+        //     "http": require.resolve("stream-http"), // yarn add stream-http
+        //     "zlib": require.resolve("browserify-zlib"), // yarn add browserify-zlib
+        //     "assert": require.resolve("assert/"), // yarn add assert
+        //     "url": require.resolve("url"), // yarn add url
+               "process": require.resolve("process"), // yarn add process
+        //
+        //     "buffer": require.resolve("buffer/") // yarn add buffer
+        //     // Muss bei "plugins" noch angegeben werden:
+        //     //
+        //     // new webpack.ProvidePlugin({
+        //     //    Buffer: ['buffer', 'Buffer'],
+        //     //    process: 'process/browser',
+        //     // }),
+         }
     },
     module: {
         rules: [
@@ -201,6 +234,11 @@ module.exports = {
         ],
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            Buffer: ['buffer', 'Buffer'],
+            process: 'process/browser',
+        }),
+
         new webpack.HotModuleReplacementPlugin(),
 
         // clean dist folder
@@ -215,7 +253,9 @@ module.exports = {
         // }),
 
         new CopyWebpackPlugin({
-            patterns: [{ from: 'src/site/images/static', to: 'images/static' }]
+            patterns: [
+                { from: 'src/site/images/static', to: 'images/static' },
+            ]
         }),
 
         // Multiple HTML-Pages
