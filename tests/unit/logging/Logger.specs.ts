@@ -1,6 +1,6 @@
 import 'jest-extended';
-import { LoggerFactory, noop } from '../../../main/logging/LoggerFactory';
-import { LogLevel } from '../../../main/logging/LogLevel';
+import { LoggerFactory, noop } from '../../../src/main/logging/LoggerFactory';
+import { LogLevel } from '../../../src/main/logging/LogLevel';
 
 describe('Logger', (): void => {
     beforeEach((): void => {

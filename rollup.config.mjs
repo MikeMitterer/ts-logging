@@ -55,7 +55,7 @@ const lib = {
             // declarationDir: './lib/types/',
             rootDir: './src/main',
             outDir: './lib',
-
+            module: 'esnext',
             tsconfig: "tsconfig.lib.json",
         }),
     ]
@@ -102,15 +102,24 @@ const dist = {
             //
             // declaration: true,
             // declarationDir: './lib/types/',
+            tsconfig: "tsconfig.lib.json",
             rootDir: './src',
             outDir: './dist',
+            module: 'esnext',
+            include: [
+                "src/main/index.ts",
+                "src/main/**/*.ts",
+                "src/browser/*.ts",
+                "src/browser/**/*.ts",
+                "src/site/images/typings.d.ts",
+                "src/types/*.d.ts"
+            ]
 
-            tsconfig: "tsconfig.lib.json",
         }),
     ]
 };
 
 // with using an array, we can create multiple bundled javascript files
 export default [
-    lib, dist
+    lib /*, dist*/
 ];
