@@ -50,7 +50,10 @@ pipeline {
                     sh 'yarn run clean'
 
                     sh 'yarn run tc'
-                    sh 'yarn run lint'
+
+                    // [ 2023 09 18 ] - wird nach der Umstellung auf eslint vorübergehend deaktiviert
+                    // sh 'yarn run lint'
+
                     sh 'yarn run test'
                 }
             }
