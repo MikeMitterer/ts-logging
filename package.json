@@ -11,7 +11,9 @@
     "main": "./lib/index.js",
     "typings": "./lib/index.d.ts",
     "scripts": {
-        "clean": "rm -rf lib dist bin &&  rm -rf node_modules/@types/istanbul-reports && jest --clearCache",
+        "clean": "rm -rf lib dist bin",
+        "clean:jest": "jest --clearCache",
+        "clean:all": "yarn clean && yarn clean:jest && rm -f yarn.lock && rm -rf node_modules && yarn clean cache",
         "update:browser": "browserslist --update-db",
         "gen:barrels": "barrelsby --singleQuotes --delete -d src/main -l top -s flat",
         "serve": "NODE_ENV=development webpack serve --config webpack.web.js --mode development",
