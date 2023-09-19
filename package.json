@@ -12,10 +12,16 @@
     "main": "./lib/index.js",
     "typings": "./lib/index.d.ts",
     "scripts": {
+        "version:pkg": "jq -r '.version' < package.json",
+        "version:pkg:full": "echo $(jq -r -j '.name' < package.json;echo ': ';yarn version:pkg)",
+        "version:remote": "curl --silent -X GET -H \"Authorization: token ${GH_TOKEN_READ_PRIVATE_REPO}\" \"https://raw.githubusercontent.com/$(cat ./.gitorg)/$(git repo)/master/package.json\" | jq -r \".version\" ",
+        "version:remote:full": "echo $(jq -r -j '.name' < package.json;echo ': ';yarn version:remote)",
+        "update": "yarn update:browser",
+        "update:browser": "browserslist --update-db",
+        "update:templates": "updateDevTemplates.sh -u",
         "clean": "rm -rf lib dist bin",
         "clean:jest": "jest --clearCache",
         "clean:all": "yarn clean && yarn clean:jest && rm -f yarn.lock && rm -rf node_modules && yarn clean cache",
-        "update:browser": "browserslist --update-db",
         "gen:barrels": "barrelsby --singleQuotes --delete -d src/main -l top -s flat",
         "serve": "NODE_ENV=development webpack serve --config webpack.web.cjs --mode development",
         "start": "yarn serve --open",
@@ -23,7 +29,7 @@
         "tc:watch": "npm run tc -- --watch",
         "lint": "yarn eslint src",
         "lint:fix": "yarn eslint src --fix",
-        "test": "yarn run test:unit && yarn run test:e2e",
+        "test": "yarn run gen:barrels && yarn run test:unit && yarn run test:e2e",
         "test:unit": "jest --colors tests/unit",
         "test:e2e": "E2E_TEST='true' jest --colors --runInBand --detectOpenHandles tests/e2e",
         "build": "yarn run clean && yarn run gen:barrels && yarn run build:rup",
@@ -49,9 +55,6 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/MikeMitterer/ts-logging"
-    },
-    "dependencies": {
-        "process": "^0.11.10"
     },
     "devDependencies": {
         "@babel/cli": "^7.22.10",
@@ -97,6 +100,7 @@
         "html-webpack-plugin": "^5.3.2",
         "html-webpack-string-replace-plugin": "^1.1.0",
         "https-browserify": "^1.0.0",
+        "indexes-of": "^1.0.1",
         "jest": "^29.6.4",
         "jest-cli": "^29.6.4",
         "jest-extended": "^2.0.0",
@@ -109,6 +113,7 @@
         "path-browserify": "^1.0.1",
         "postcss": "^8.4.29",
         "postcss-loader": "^7.3.3",
+        "process": "^0.11.10",
         "puppeteer": "^21.1.1",
         "rollup": "^3.29.2",
         "rollup-plugin-css-porter": "^1.0.2",
@@ -126,6 +131,7 @@
         "typedoc": "^0.25",
         "typedoc-plugin-markdown": "^3.10.2",
         "typescript": "^5.2.2",
+        "uniq": "^1.0.1",
         "webpack": "5.88.2",
         "webpack-cli": "5.1.4",
         "webpack-dev-server": "4.7.4",

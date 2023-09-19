@@ -5,7 +5,7 @@ import { LogLevel } from '../../../src/main/logging/LogLevel';
 describe('Logger', (): void => {
     beforeEach((): void => {
         // Mock the console object
-        // @ts-ignore
+        // @ts-ignore - Mock sollte hier OK sein
         global.console = {
             debug: jest.fn(),
             info: jest.fn(),
@@ -47,7 +47,7 @@ describe('Logger', (): void => {
             .level(LogLevel.DEBUG)
             .get();
 
-        // @ts-ignore
+        // @ts-ignore Beim Testen ist die console OK
         global.console.debug.mockImplementation((message): void => expect(message).toContain('[DEBUG] Servus'));
 
         logger.debug('Servus');
