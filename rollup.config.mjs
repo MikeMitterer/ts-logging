@@ -18,7 +18,8 @@ import pkg from './package.json' assert { type: 'json' };
 //   │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
 //
 // geführt...
-import styles from "rollup-plugin-styles";
+import css from 'rollup-plugin-css-porter';
+import sass from 'rollup-plugin-sass';
 
 import image from '@rollup/plugin-image';
 
@@ -43,6 +44,8 @@ const lib = {
 
     ],
     plugins: [
+        sass(),
+        css(),
         replace({
             preventAssignment: true,
             __buildVersion__: pkg.version
@@ -89,7 +92,8 @@ const dist = {
         //         './node_modules/',
         //     ]
         // }),
-        styles(),
+        sass(),
+        css(),
         image(),
 
         replace({

@@ -15,5 +15,6 @@ JENKINS_JOB_TOKEN="ts-logging"
 # Parameter werden bei manchen builds benötigt
 JENKINS_PARAMS=(
     "PUBLISH_TO_NMP=false"
+    "REMOVE_NODE_MODULES=false"
     # "delay=1"
 )
