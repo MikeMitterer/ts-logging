@@ -23,7 +23,7 @@ function srcPath(subdir) {
 
 module.exports = {
     extends: [
-        path.resolve(__dirname, './webpack.web.local.js'),
+        path.resolve(__dirname, './webpack.web.local.cjs'),
     ],
     cache: devMode,
     // https://webpack.js.org/configuration/target/
@@ -101,7 +101,7 @@ module.exports = {
             // Can't resolve 'fs' in
             "fs": false,
 
-            // Die auskommentierten Module können im webpack.web.local.js
+            // Die auskommentierten Module können im webpack.web.local.cjs
             // wieder aktiviert werden
 
             // "tls": false,
