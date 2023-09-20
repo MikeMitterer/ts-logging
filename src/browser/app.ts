@@ -6,19 +6,6 @@ import {testMUnit} from "./test/muni.e2e.test";
 
 const query = (selector: string): HTMLElement => document.querySelector(selector) as HTMLElement;
 
-// /**
-//  * Start wird manuell durchgeführt - sonst kommt es immer wieder
-//  * zu Problemen bei async-Calls!
-//  *
-//  * Weitere Infos:
-//  *      https://api.qunitjs.com/config/QUnit.config
-//  *
-//  *      # Führt die Tests auf der cmdline mit puppeteer aus
-//  *      yarn test:e2e -
-//  */
-// @ts-ignore
-// window.QUnit = { config: { autostart: false /* noglobals: true */ } };
-
 // Retrieve a logger (you can decide to use it per class and/or module or just
 // export it in the config above etc. Your loggers - your choice!).
 // This logger will fall in the first LogGroupRule from above.

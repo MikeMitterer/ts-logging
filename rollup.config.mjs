@@ -23,13 +23,15 @@ import sass from 'rollup-plugin-sass';
 
 import image from '@rollup/plugin-image';
 
-const name = "logging"
+// Nur für iife/umd notwendig
+const name = pkg.name.replace(/^@.*\//, '');
 
 const lib = {
     // this is the entry file, this should expose our API
     input: 'src/main/index.ts',
     // this is where the bundled javascript file will be put
     output: [{
+        // Nur für iife/umd notwendig
         name,
         dir: `./lib`,
         format: 'esm', // the preferred format
@@ -94,7 +96,12 @@ const dist = {
         // }),
         sass(),
         css(),
-        image(),
+        image({
+            extensions: /\.(png|jpg|jpeg|gif|svg)$/,
+            include: [
+                'src/site/images/**/*.png',
+                ],
+        }),
 
         replace({
             preventAssignment: true,
@@ -111,10 +118,12 @@ const dist = {
             outDir: './dist',
             module: 'esnext',
             include: [
-                "src/main/index.ts",
-                "src/main/**/*.ts",
                 "src/browser/*.ts",
                 "src/browser/**/*.ts",
+                "browser/*.ts",
+                "browser/**/*.ts",
+                "src/main/index.ts",
+                "src/main/**/*.ts",
                 "src/site/images/typings.d.ts",
                 "src/types/*.d.ts"
             ]
@@ -125,5 +134,5 @@ const dist = {
 
 // with using an array, we can create multiple bundled javascript files
 export default [
-    lib /*, dist*/
+     dist
 ];

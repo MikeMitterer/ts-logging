@@ -24,7 +24,7 @@ module.exports = {
         // headless: process.env.HEADLESS !== 'false',
 
         // https://developer.chrome.com/articles/new-headless/
-        // headless: 'old',
+        headless: 'new',
         // devtools: true
 
         // args: ['--lang=en-GB']
