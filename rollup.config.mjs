@@ -134,5 +134,5 @@ const dist = {
 
 // with using an array, we can create multiple bundled javascript files
 export default [
-     dist
+     lib
 ];
