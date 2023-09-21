@@ -177,18 +177,38 @@ module.exports = {
             //          configFile: path.resolve(__dirname, 'tsconfig.lib.json')
             // }},
 
+            // {
+            //     test: /\.m?js$/,
+            //     type: "javascript/auto",
+            // },
+            // {
+            //     test: /\.m?js$/,
+            //     resolve: {
+            //         fullySpecified: false,
+            //     },
+            // },
+
             // Speed: ~400ms
             // (exclude: /node_modules/, am 27.2.2020 entfernt da es sonst Probleme mit
-            // dem coalescing-operator aus anderen Modulen gibt)
+            // dem coalescing-operator aus anderen Modulen gibt).
+            //
+            // Damit auch ES6 Module funktieren wurde am [ 2023 09 20]
+            // "type" und "resolve" hinzugefügt
+            //     https://stackoverflow.com/a/69519812/504184
+            //
             {
                 test: /\.(ts|js)x?$/,
+                type: "javascript/auto",
                 exclude: /node_modules\/(?!(@mmit)\/).*/,
                 loader: 'babel-loader',
                 options: {
                     cacheDirectory: true,
                     // And replace .babelrc with babel.config.json...
                     babelrc: false
-                }
+                },
+                resolve: {
+                    fullySpecified: false,
+                },
             },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
