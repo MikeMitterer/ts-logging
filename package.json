@@ -105,7 +105,7 @@
         "jest-cli": "29.7.0",
         "jest-extended": "2.0.0",
         "jest-haste-map": "29.7.0",
-        "jest-puppeteer": "29.7.0",
+        "jest-puppeteer": "10.1.0",
         "jest-resolve": "29.7.0",
         "json5": "^2.2.0",
         "mini-css-extract-plugin": "^2.2.0",
