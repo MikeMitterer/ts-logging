@@ -28,10 +28,10 @@ module.exports = {
         // devtools: true
 
         // https://pptr.dev/troubleshooting#setting-up-chrome-linux-sandbox
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-        ]
+        // args: [
+        //     '--no-sandbox',
+        //     '--disable-setuid-sandbox',
+        // ]
     },
 }
 
